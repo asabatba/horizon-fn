@@ -3,20 +3,25 @@
   "type": "module",
   "version": "0.0.1",
   "description": "Compute a physically-based sky CSS gradient from a date and coordinates",
+  "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "compile": "tsup"
+    "build": "tsup",
+    "compile": "tsup",
+    "prepack": "tsup"
   },
   "dependencies": {
     "suncalc": "^1.9.0"
