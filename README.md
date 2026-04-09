@@ -1,14 +1,38 @@
-# Horizon
+# horizon-fn
 
-The current sky at your approximate location, rendered as a CSS gradient. Refreshes every minute.
+Generate a CSS sky gradient from a `Date` and geographic coordinates.
 
-Created for [HTML Day 2025](https://html.energy/html-day/2025/index.html) as a showcase of CSS gradients and the little-known `meta http-equiv="Refresh"` HTML tag ([MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/http-equiv)).
+## Install
 
-The page is rendered on-demand by a server. No JavaScript is sent to the client.
+```bash
+pnpm add horizon-fn
+```
 
-Featured at #1 on [Hacker News](https://news.ycombinator.com/item?id=44846281).
+For a GitHub dependency, use a commit or tag that includes the built `dist/` files.
 
-## Attribution
+## Usage
 
-- Physical model and parameter choices originally appeared in ["A Scalable and Production Ready Sky and Atmosphere Rendering Technique"](https://onlinelibrary.wiley.com/doi/10.1111/cgf.14050) (Sébastien Hillaire).
-- Implementation derived from ["Production Sky Rendering"](https://www.shadertoy.com/view/slSXRW) (Andrew Helmer, MIT License).
+```ts
+import { horizonGradient } from "horizon-fn";
+
+const sky = horizonGradient(new Date(), 41.3874, 2.1686);
+
+console.log(sky.gradient);
+// linear-gradient(...)
+
+console.log(sky.top);
+console.log(sky.bottom);
+// [r, g, b]
+```
+
+## API
+
+```ts
+horizonGradient(date: Date, lat: number, lon: number)
+```
+
+Returns:
+
+- `gradient`: CSS `linear-gradient(...)` string
+- `top`: top sky color as `[r, g, b]`
+- `bottom`: horizon color as `[r, g, b]`
