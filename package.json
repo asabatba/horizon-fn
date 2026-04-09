@@ -1,12 +1,12 @@
 {
   "name": "horizon-fn",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Compute a physically-based sky CSS gradient from a date and coordinates",
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
       "default": "./dist/index.js"
@@ -14,9 +14,10 @@
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "tsup",
